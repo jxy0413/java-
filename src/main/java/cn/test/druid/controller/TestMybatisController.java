@@ -22,10 +22,19 @@ public class TestMybatisController {
     private TestMybatisService testMybatisService;
 
     @ApiOperation("查询所有接口")
-    @GetMapping("/get")
-    public ResultModel get(){
+    @GetMapping("/getList")
+    public ResultModel getList(){
+        System.out.println("查询所有员工");
         List<Department> list = testMybatisService.get();
         return ResultModel.ok(list);
+    }
+
+    @ApiOperation("查询某一个员工接口")
+    @GetMapping("/get/{id}")
+    public ResultModel get(@PathVariable("id") Integer id){
+        System.out.println("===");
+        Department department = testMybatisService.getOne(id);
+        return ResultModel.ok(department);
     }
 
     @ApiOperation("创建接口")
@@ -35,8 +44,8 @@ public class TestMybatisController {
         return ResultModel.ok(null);
     }
 
-    @PutMapping("/update")
-    public ResultModel update(@RequestBody Department department){
+    @GetMapping("/update")
+    public ResultModel update(Department department){
         testMybatisService.update(department);
         return ResultModel.ok(null);
     }
@@ -45,5 +54,12 @@ public class TestMybatisController {
     public ResultModel delete(@PathVariable Integer id){
         testMybatisService.delete(id);
         return ResultModel.ok(null);
+    }
+
+    @ApiOperation("查询某一个员工接口")
+    @GetMapping("/get/{departmentName}")
+    public ResultModel get(@PathVariable("departmentName") String departmentName){
+        Department department = testMybatisService.getDepartmentByName(departmentName);
+        return ResultModel.ok(department);
     }
 }

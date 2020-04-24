@@ -7,10 +7,10 @@ import java.util.List;
 
 /**
  * @Auther jxy
- * @Date 2020-04-19
+ * @Date 2020-04-20
  */
 @Mapper
-public interface TestMybatisMapper {
+public interface DepartmentMapper {
     @Select("select * from department")
     public List<Department> get();
 
@@ -22,10 +22,4 @@ public interface TestMybatisMapper {
 
     @Delete("delete from department where id=#{id}")
     void delete(Integer id);
-
-    @Select("select * from department where id = #{id}")
-    Department getOne(Integer id);
-
-    @Select("select * from department where department_name = #{departmentName}")
-    Department getDepartmentByName(String departmentName);
 }
