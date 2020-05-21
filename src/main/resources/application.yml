@@ -1,6 +1,7 @@
 spring:
   redis:
     host: 101.37.35.14
+    password: jiaxiangyu
   jpa:
     hibernate:
       ddl-auto: update  # 第一次建表create  后面用update，要不然每次重启都会新建表

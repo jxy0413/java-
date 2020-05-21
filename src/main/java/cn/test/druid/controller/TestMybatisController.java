@@ -2,13 +2,14 @@ package cn.test.druid.controller;
 
 import cn.test.druid.common.ResultModel;
 import cn.test.druid.model.Department;
+import cn.test.druid.service.RedisService;
 import cn.test.druid.service.TestMybatisService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 /**
  * @Auther jxy
@@ -21,18 +22,19 @@ public class TestMybatisController {
     @Autowired
     private TestMybatisService testMybatisService;
 
+    @Autowired
+    private RedisService redisService;
     @ApiOperation("查询所有接口")
     @GetMapping("/getList")
     public ResultModel getList(){
         System.out.println("查询所有员工");
-        List<Department> list = testMybatisService.get();
-        return ResultModel.ok(list);
+        redisService. testRedisTemplate();
+        return ResultModel.ok(null);
     }
 
     @ApiOperation("查询某一个员工接口")
     @GetMapping("/get/{id}")
     public ResultModel get(@PathVariable("id") Integer id){
-        System.out.println("===");
         Department department = testMybatisService.getOne(id);
         return ResultModel.ok(department);
     }
@@ -56,10 +58,10 @@ public class TestMybatisController {
         return ResultModel.ok(null);
     }
 
-    @ApiOperation("查询某一个员工接口")
-    @GetMapping("/get/{departmentName}")
-    public ResultModel get(@PathVariable("departmentName") String departmentName){
-        Department department = testMybatisService.getDepartmentByName(departmentName);
-        return ResultModel.ok(department);
-    }
+//    @ApiOperation("查询某一个员工接口")
+//    @GetMapping("/get/{departmentName}")
+//    public ResultModel get(@PathVariable("departmentName") String departmentName){
+//        Department department = testMybatisService.getDepartmentByName(departmentName);
+//        return ResultModel.ok(department);
+//    }
 }

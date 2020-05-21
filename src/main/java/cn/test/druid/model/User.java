@@ -3,6 +3,7 @@ package cn.test.druid.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @Auther jxy
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Entity //告诉JPA这是一个实体类（和数据表映射的类）
 @Table(name = "tbl_user")
 @Data
-public class User {
+public class User implements Serializable {
     @Id //这是一个主键
     @GeneratedValue(strategy = GenerationType.IDENTITY)//自增主键
     private Integer id;
