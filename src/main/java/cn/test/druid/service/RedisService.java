@@ -24,11 +24,7 @@ import java.util.Set;
 @Service
 public class RedisService implements Serializable {
     @Autowired
-    private RedisTemplate redisTemplate;
-    @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    @Autowired
-    RedisTemplate<Object,User> userRedisTemplate;
     public void testRedis(){
         Integer append = stringRedisTemplate.opsForValue().append("jia1", "shi");
         stringRedisTemplate.opsForList().leftPush("myList","k1");
@@ -39,7 +35,7 @@ public class RedisService implements Serializable {
         user.setEmail("15011006250@163.com");
         user.setId(1);
         user.setLastName("jiaxiangyu");
-        userRedisTemplate.opsForValue().set("user",user);
+        //userRedisTemplate.opsForValue().set("user",user);
     }
 
     public void testRedisTemplate(){
@@ -55,7 +51,7 @@ public class RedisService implements Serializable {
         System.out.println(stringRedisTemplate.opsForValue().get("k1"));
         //操作hash
         //userRedisTemplate.opsForHash().putAll(str,map);
-        System.out.println(userRedisTemplate.opsForValue().get(str));
+        //System.out.println(userRedisTemplate.opsForValue().get(str));
         //操作list
          stringRedisTemplate.opsForList().leftPush("k2","v1");
         //操作set

@@ -22,4 +22,9 @@ public class TestLong {
         jsonArray.add(jsonObject1);
         System.out.println(jsonArray);
     }
+
+    @Test
+    public void test1(){
+
+    }
 }

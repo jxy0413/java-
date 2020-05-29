@@ -1,3 +1,5 @@
+aliyun : 101.37.35.14:3306
+
 spring:
   redis:
     host: 101.37.35.14
@@ -11,7 +13,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://101.37.35.14:3306/jdbc?useSSL=false
+    url: jdbc:mysql://${aliyun}/jdbc?useSSL=false
     type: com.alibaba.druid.pool.DruidDataSource
     #数据源其他配置
     initialSize: 5
